@@ -1,23 +1,26 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import logo from "../img/logo2.jpg";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../context/LoginContext";
 
-export default function Navbar({login}) {
+export default function Navbar({ login }) {
 
-    const {setModalOpen} = useContext(LoginContext)
+    const { setModalOpen } = useContext(LoginContext)
 
     const loginStatus = () => {
         const token = localStorage.getItem("jwt");
         if (login || token) {
             return [
                 <>
-                    <Link to="/profile">
-                        <li>Query</li>
+                    
+
+
+                    <Link to="/about">
+                        <li>About</li>
                     </Link>
-                    <Link to="/create">
-                        <li>Create</li>
+                    <Link to="/contactus">
+                        <li>Contact Us</li>
                     </Link>
                     <Link to="">
                         <button className="primaryBtn" onClick={() => {
@@ -30,21 +33,21 @@ export default function Navbar({login}) {
             return [
                 <>
                     <Link to="/signup">
-                        <li>signup</li>
+                        <li className="primaryBtn2">signup</li>
                     </Link>
                     <Link to="/signin">
-                        <li>signin</li>
+                        <li className="primaryBtn3">signin</li>
                     </Link>
                 </>,
             ];
         }
     };
-    
+
 
     return (
         <div className="navbar">
-            
-            <img src={logo} className="logo" alt="" style={{width:"100px"}}/>
+
+            <img src={logo} className="logo1" alt=""  style={{borderRadius:"50%"}}/>
             <ul className="nav-menu">
                 {loginStatus()}
 

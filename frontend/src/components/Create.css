@@ -1,0 +1,20 @@
+
+.common{
+    width: 370px;
+    height: 37px;
+}
+
+.primaryBtn4{
+    cursor: pointer;
+    list-style: none;
+    font-weight: bolder;
+    padding: 13px 25px;
+    font-size: 0.8rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    background: rgb(3, 254, 57);
+    border-radius: 15px;
+    margin-left: 20px;
+    margin-top: 17px;
+    transition: all 0.25s ease;
+}

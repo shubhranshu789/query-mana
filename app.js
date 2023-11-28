@@ -22,6 +22,9 @@ app.use(cors())
 require('./models/model')
 require('./models/admin')
 require('./models/post')
+require('./models/moderator')
+require('./models/feedback1')
+
 
 app.use(express.json())
 
@@ -32,7 +35,6 @@ app.use(require("./routes/admin"))
 
 
 app.use(express.static(path.join(__dirname , "./frontend/build")))
-
 app.get("*" , (req,res)=> {
     res.sendFile(
         path.join(__dirname , "./frontend/build/index.html"),

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logo from "../img/logo2.jpg"
+import userpic from "../img/user.png"
 import './SignUp.css'
 import { Link , useNavigate} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function SignUp() {
 
     // const fetchData = async () => {
-    //     const response = await fetch("http://localhost:5000/");
+    //     const response = await fetch("/");
     //     const data = await response.json()
     //     console.log(data)
     // }
@@ -24,12 +25,19 @@ function SignUp() {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    // const [ipAddress, setipAddress] = useState("");
+    const [ip, setIp] = useState("");
 
     //functions
 
     const notifyA = (msg) => toast.error(msg)
     const notifyB = (msg) => toast.success(msg)
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+
+    useEffect(() => {
+        // setipAddress("1111.1111.1111.1111")
+    }, []);
 
     const postData = () => {
 
@@ -39,19 +47,26 @@ function SignUp() {
             return
         }
 
+        // fetch("https://api.ipify.org").
+        // then((res) => res.text())
+        // .then(ip => setIp(ip))
+        // .catch(err => console.log(err))
+
         //sending data to server 
-        fetch("/signup" , {
+        fetch("/signup1" , {
             method:"post",
             headers: {
                 "Content-Type" : "application/json"
             },
             body:JSON.stringify({
                 name:name,
-                email:email,
+                email:email.toLowerCase(),
                 userName:userName,
                 password:password,
                 phone:phone,
-                address:address
+                address:address,
+                // ip:ip
+
             })
 
             
@@ -67,6 +82,10 @@ function SignUp() {
             console.log(data)})
     }
 
+    const data = () => {
+        // console.log(ipAddress);
+    }
+
 
 
 
@@ -75,11 +94,10 @@ function SignUp() {
             <div className="form-container">
                 <h1>User SignUp Page</h1>
                 <br />
-                <br />
-                <br />
-                <img className='signUpLogo' src={logo} alt="" />
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea unde placeat voluptas aliquid nemo sapiente error asperiores est ullam in alias earum, nihil explicabo modi dicta id eligendi odit tenetur.</p>
-                <div>
+                
+                <img className='signUpLogo' src={userpic} alt="" />
+                {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea unde placeat voluptas aliquid nemo sapiente error asperiores est ullam in alias earum, nihil explicabo modi dicta id eligendi odit tenetur.</p> */}
+                <div >
                     <input type="email" name="email" id="email" placeholder='Email' 
                     value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                 </div>
@@ -105,23 +123,46 @@ function SignUp() {
                     value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                 </div>
                 <input type="submit" id='submit-btn' value="SignUp" onClick={() => {postData()}}/>
-            </div>
 
-            <div className='form2'>
+
+                {/* <input type="submit" id='submit-btn' value="DATA" onClick={() => {data()}}/> */}
+                <div className='form2'>
                 Aready have an account ?
 
                 <Link to="/signin">
                     <span style={{ color: "blue", cursor: "pointer" }}>User Sign In</span>
                 </Link>
-
-                Admin login
+<br />
+                Admin login : 
                 <Link to="/admin">
                     <span style={{ color: "blue", cursor: "pointer" }}>Admin Login</span>
                 </Link>
+                <br />
+
+                {/* Moderate login
+                <Link to="/moderate">
+                    <span style={{ color: "blue", cursor: "pointer" }}>Moderate Login</span>
+                </Link> */}
+
+                Moderate SingIn :
+                <Link to="/moderatorsignin">
+                    <span style={{ color: "blue", cursor: "pointer" }}>Agent SignIn</span>
+                </Link>
 
             </div>
+            </div>
+
+          
+
+
+            
+
+
+            
         </div>
     )
 }
 
 export default SignUp
+
+

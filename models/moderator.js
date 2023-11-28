@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const agentSchema = new mongoose.Schema({
+    
     name : {
         type:String,
         require:true
@@ -24,13 +25,8 @@ const userSchema = new mongoose.Schema({
     phone:{
         type: Number,
         require:true
-    },
-
-    //add IP
-    ip:{
-        type: String,
-        require:true
     }
+   
 })
 
-mongoose.model("USER" , userSchema)
+mongoose.model("AGENT" , agentSchema)

@@ -1,57 +1,56 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from "react-toastify";
+import './AllAgents.css'
 
-import './AdminHome.css'
+function AllAgents() {
 
-
-function AdminHome() {
 
     const navigate = useNavigate();
     const [data, setData] = useState([]);
+
     const notifyA = (msg) => toast.error(msg);
     const notifyB = (msg) => toast.success(msg);
 
-    const show = () =>{
+    const show = () => {
         console.log(data)
     }
 
 
     useEffect(() => {
-        fetch("/allquery" , {
-            headers : {
-                "Authorization" : "Bearer "+ localStorage.getItem("jwt") 
+        fetch("/allagents", {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("jwt")
             },
         }).then(res => res.json())
-        .then(result => {
-            console.log(result)
-            setData(result)})
-        .catch(err => console.log(err))
+            .then(result => {
+                console.log(result)
+                setData(result)
+            })
+            .catch(err => console.log(err))
     }, []);
 
-    
-    const removePost = (postId)=> {
-        fetch(`/deletePost/${postId}`,{
-            method : "delete",
+
+    const removeAgent = (userId) => {
+        fetch(`/deleteAgent/${userId}`, {
+            method: "delete",
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type": "application/json"
             },
         }).then((res) => res.json())
-        .then((result) => {
-            console.log(result)
-            notifyB(result.message)
-        })
+            .then((result) => {
+                console.log(result)
+            })
     }
 
+
+
     return (
-
-
-
         <div className='profile'>
 
             {/* <div className="btn">
-                    <button onClick={() => {show()}}>hello</button>
-                </div> */}
+            <button onClick={() => {show()}}>hello</button>
+        </div> */}
             <div className="profile-frame">
 
                 <div className="profile-pic">
@@ -61,39 +60,46 @@ function AdminHome() {
                 <div className="profile-data">
                     <h1>{JSON.parse(localStorage.getItem("user")).name}</h1>
                     <div className="profile-info" >
-    
 
-                    <p>{JSON.parse(localStorage.getItem("user")).address}</p>
-                    <p>{JSON.parse(localStorage.getItem("user")).phone}</p>
-                    <p>{JSON.parse(localStorage.getItem("user")).email}</p>
 
-                    <br />
-                    <br />
-                    <br />
-                    
+                        <p>{JSON.parse(localStorage.getItem("user")).address}</p>
+                        <p>{JSON.parse(localStorage.getItem("user")).phone}</p>
+                        <p>{JSON.parse(localStorage.getItem("user")).email}</p>
 
-                    <Link to="/moderate">
-                        {/* <span style={{ color: "blue", cursor: "pointer" }}>Admin Login</span> */}
-                        <button className='primaryBtn6'>Create Agent</button>
-                    </Link>
-                    
-                    <Link to="/allagents">
-                        {/* <span style={{ color: "blue", cursor: "pointer" }}>Admin Login</span> */}
-                        <button className='primaryBtn6'>All Agent</button>
-                    </Link>
 
-                    <Link to="/report11">
-                        {/* <span style={{ color: "blue", cursor: "pointer" }}>Admin Login</span> */}
-                        <button className='primaryBtn66' style={{}}>Report</button>
-                    </Link>
+
                     </div>
                 </div>
             </div>
-            <br />
-           
-           
+            <div className="gallery">
+                {
+                    data.map((posts) => {
+                        return (
+                            <div className="card22">
+                                <div class="card22">
+                                    <div class="container">
+                                        <p><b>NAME :</b> {posts?.name}</p>
+                                        <p><b>ADDRESS :</b>{posts?.address}</p>
+                                        <p><b>PHONE :</b> {posts?.phone}</p>
+                                        <p><b>USERNAME :</b> {posts?.userName}</p>
+                                        <p><b>EMAIL :</b> {posts?.email}</p>
+                                        <button className="primaryBtn7"
+                                            onClick={() => { removeAgent(posts._id) }}
+                                        >Delete Agent</button>
+                                        <br />
+                                        <br />
+                                    </div>
+                                    
+                                </div> 
+                              
+                            </div>
+                            
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
 
-export default AdminHome
+export default AllAgents

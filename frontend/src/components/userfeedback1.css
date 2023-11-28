@@ -1,0 +1,19 @@
+.profile-frame1{
+    /* background: #d13434; */
+    height: 262px;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+.profile-info1{
+    margin-left: 42px;
+}
+
+.name22{
+    margin-left: 40px;
+}
+
+.gallery1{
+    width: 60%;
+    margin-left: 287px;
+}

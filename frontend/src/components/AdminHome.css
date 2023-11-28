@@ -1,0 +1,94 @@
+.primaryBtn5{
+    cursor: pointer;
+    list-style: none;
+    font-weight: bolder;
+    padding: 13px 250px;
+    font-size: 0.8rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    background: rgb(3, 254, 57);
+    border-radius: 5px;
+    margin-left: 11px;
+    margin-top: 17px;
+    transition: all 0.25s ease;
+}
+
+
+.primaryBtn6{
+    cursor: pointer;
+    list-style: none;
+    font-weight: bolder;
+    padding: 13px 269px;
+    font-size: 0.8rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    background: rgb(221, 3, 254);
+    border-radius: 5px;
+    margin-left: -150px;
+    margin-top: 17px;
+    transition: all 0.25s ease;
+}
+.primaryBtn66{
+    cursor: pointer;
+    list-style: none;
+    font-weight: bolder;
+    padding: 13px 269px;
+    font-size: 0.8rem;
+    border: none;
+    color: rgb(0, 0, 0);
+    background: rgb(221, 3, 254);
+    border-radius: 5px;
+    margin-left: -150px;
+    margin-top: 17px;
+    transition: all 0.25s ease;
+    height: 54px;
+    padding-right: 280px;
+}
+
+.card11 {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card11:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+    padding: 2px 16px;
+  }
+  
+  
+  .card11 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+  }
+  
+
+
+
+.card12 {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card12:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+
+  
+  .card12 {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    width: 70%;
+    margin-left: 215px;
+  }
+  
